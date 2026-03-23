@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY ./requirements.txt /parser/requirements.txt
 
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update
 
 RUN pip install --no-cache-dir --upgrade -r /parser/requirements.txt
 
