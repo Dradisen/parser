@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./backend/python
+    volumes:
+      - ./backend/python:/parser/backend
+    command: ["uvicorn", "backend.main:app", "--reload", "--host", "0.0.0.0", "--port", "8001"]
+    env_file:
+      - .env
+    ports:
+      - "8001:8001"
+  database:
+    image: postgres:18.3
+    environment:
+      POSTGRES_USER: parser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dbparser
+    ports:
+      - "5432:5432"
